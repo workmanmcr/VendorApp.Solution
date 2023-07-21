@@ -5,15 +5,28 @@ using VendorApp.Models;
 
 namespace VendorApp.Tests
 {
-    [TestClass]
-    public class VendorTests 
+  [TestClass]
+  public class VendorTests
+  {
+
+    [TestMethod]
+    public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
     {
-   
-        [TestMethod]
-       public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
-        {
-        Vendor newVendor = new Vendor("test", "test");
-        Assert.AreEqual(typeof(Vendor), newVendor.GetType());
-        }
+      Vendor newVendor = new Vendor("test", "test");
+      Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
+    [TestMethod]
+    public void GetName_ReturnsName_String()
+    {
+      //Arrange
+      string name = "Test name";
+      Vendor newVendor = new Vendor(name, "test");
+
+      //Act
+      string result = newVendor.Name;
+
+      //Assert
+      Assert.AreEqual(name, result);
+    }
+  }
 }
