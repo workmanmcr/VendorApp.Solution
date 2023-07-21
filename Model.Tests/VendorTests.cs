@@ -78,7 +78,7 @@ namespace VendorApp.Tests
   public void GetOrders_ReturnsOrderList_Vendor()
   {
     //Arrange
-    string name01 = "Work";
+    string name01 = "bobs smokehouse";
     Vendor newVendor1 = new Vendor(name01,"Test");
     Order newOrder1 = new Order ("bob","12dozen",20,1,"bob", DateTime.Now, 1);
     List<Order> newVendorOrders= new List<Order> {newOrder1};
@@ -94,7 +94,7 @@ namespace VendorApp.Tests
   public void GetOrderCOunt_ReturnsTheNumberOfOrdersInList_Vendor()
   {
     //Arrange
-    string name01 = "Work";
+    string name01 = "bobs smokehouse";
     Vendor newVendor1 = new Vendor(name01,"Test");
     Order newOrder1 = new Order ("bob","12dozen",20,1,"bob", DateTime.Now, 1);
     newVendor1.AddOrder(newOrder1);
@@ -106,6 +106,22 @@ namespace VendorApp.Tests
    
     //Assert
      Assert.AreEqual(1, result);
+  }
+  [TestMethod]
+  public void GetVendorWithId_returnsCorrectVendor_vendor()
+  {
+    //Arrange
+    string name01 = "bobs smokehouse";
+    string name02 = "Suasage Palace";
+    Vendor newVendor1 = new Vendor(name01,"Test");
+    Vendor newVendor2 = new Vendor(name02,"test");
+    List<Vendor> newVendor = new List<Vendor>(){newVendor1,newVendor2};
+    
+    //Act
+    Vendor result = Vendor.GetVendorWithId(1);
+
+    //Assert
+    Assert.AreEqual(result, newVendor2);
   }
 
   }
