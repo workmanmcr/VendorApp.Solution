@@ -90,6 +90,23 @@ namespace VendorApp.Tests
     //Assert
      CollectionAssert.AreEqual(newVendorOrders, result);
   }
+  [TestMethod]
+  public void GetOrderCOunt_ReturnsTheNumberOfOrdersInList_Vendor()
+  {
+    //Arrange
+    string name01 = "Work";
+    Vendor newVendor1 = new Vendor(name01,"Test");
+    Order newOrder1 = new Order ("bob","12dozen",20,1,"bob", DateTime.Now, 1);
+    newVendor1.AddOrder(newOrder1);
+    
+    
+    //Act
+    int result = newVendor1.GetOrderCount();
+    
+   
+    //Assert
+     Assert.AreEqual(1, result);
+  }
 
   }
 }
