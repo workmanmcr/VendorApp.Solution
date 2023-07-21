@@ -123,6 +123,21 @@ namespace VendorApp.Tests
     //Assert
     Assert.AreEqual(result, newVendor2);
   }
+  [TestMethod]
+  public void SearchVendor_returnsCorrectVendor_vendor()
+  {
+    //Arrange
+    string name01 = "Bobs Smokehouse";
+    string name02 = "Sausage Palace";
+    Vendor newVendor1 = new Vendor(name01,"Test");
+    Vendor newVendor2 = new Vendor(name02,"test");
+
+    //Act
+    Vendor result = Vendor.SearchVendor("Bobs Smokehouse");
+
+    //Assert
+    Assert.AreEqual(newVendor1, result);
+  }
 
   }
 }
