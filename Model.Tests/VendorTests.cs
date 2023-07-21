@@ -59,21 +59,21 @@ namespace VendorApp.Tests
       //Assert
       Assert.AreEqual(newVendor2, result);
     }
-    // [TestMethod]
-    // public void AddOrder_VendorOrderListShowsOrder_Vendor()
-    // {
-    //   //Arrange
-    //   string name01 = "bobs smokehouse";
-    //   Vendor newVendor1 = new Vendor(name01, "Test");
-    //   Order newOrder1 = new Order("bob", "12dozen", 20, 1, "bob", 1);
-    //   List<Order> newVendorOrders = new List<Order> { newOrder1 };
-    //   newVendor1.AddOrder(newOrder1);
+    [TestMethod]
+    public void AddOrder_VendorOrderListShowsOrder_Vendor()
+    {
+      //Arrange
+      string name01 = "bobs smokehouse";
+      Vendor newVendor1 = new Vendor(name01, "Test");
+      Order newOrder1 = new Order("bob", "12dozen", 20, 1, "bob", DateTime.Now, 1);
+      List<Order> newVendorOrders = new List<Order> { newOrder1 };
+      newVendor1.AddOrder(newOrder1);
 
-    //   //Act
-    //   List<Order> result = newVendor1.GetOrders();
-    //   //Arrange
-    //   CollectionAssert.AreEqual(newVendorOrders, result);
-    // }
+      //Act
+      List<Order> result = newVendor1.GetOrders();
+      //Arrange
+      CollectionAssert.AreEqual(newVendorOrders, result);
+    }
 
   }
 }
