@@ -31,7 +31,7 @@ namespace VendorApp.Tests
       Assert.AreEqual(name, result);
     }
       [TestMethod]
-    public void GetAll_ReturnsCategoryObjects_CategoryList () 
+    public void GetAll_ReturnsCategoryObjects_Category () 
     {
       //Arrange
       string name01 = "taco";
@@ -44,6 +44,19 @@ namespace VendorApp.Tests
       List<Vendor> newResult = Vendor.GetAll();
       //Assert
       CollectionAssert.AreEqual (newList, newResult);
+    }
+    [TestMethod]
+    public void FindVendor_ReturnCorrectVendor_Vendor ()
+    {
+        //Arrange
+        string name01 = "bobs cookhouse";
+        string name02 = "sauage palace";
+        Vendor newVendor1 = new Vendor(name01, "test");
+        Vendor newVendor2 = new Vendor(name02, "test");
+        //Act
+        Vendor result = Vendor.Find(2);
+        //Assert
+        Assert.AreEqual(newVendor2, result);
     }
     
   }
