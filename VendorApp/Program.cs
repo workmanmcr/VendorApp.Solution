@@ -1,9 +1,11 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
 namespace VendorApp
 {
-    public class Program
+  [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
+  public class Program
     {
         public static void Main(string[] args)
         {
@@ -15,10 +17,11 @@ namespace VendorApp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseKestrel(options =>
-                    {
-                        options.ListenAnyIP(5001); // Listen on port 5001 on all available network interfaces.
-                    });
                 });
+
+    private string GetDebuggerDisplay()
+    {
+      return ToString();
     }
+  }
 }

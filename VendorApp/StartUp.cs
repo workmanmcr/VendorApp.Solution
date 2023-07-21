@@ -23,21 +23,25 @@ namespace VendorApp
       services.AddMvc();
     }
 
-    public void Configure(IApplicationBuilder app)
-    {
-      app.UseDeveloperExceptionPage();
-      app.UseStaticFiles();
-      app.UseMvc(routes =>
-      {
-        routes.MapRoute(
-          name: "default",
-          template: "{controller=Home}/{action=Index}/{id?}");
-      });
+public void Configure(IApplicationBuilder app)
+{
+    app.UseDeveloperExceptionPage();
+    app.UseStaticFiles();
 
-        app.Run(async (context) =>
-        {
-          await context.Response.WriteAsync("Something went wrong!");
-        });
+    // Remove app.UseMvc(...)
+    // Instead, use Endpoint Routing
+    app.UseRouting();
+    
+    // Other middleware configurations...
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+        
+        // Additional endpoint mappings if needed...
+    });
 
     }
   }
