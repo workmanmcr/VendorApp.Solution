@@ -6,17 +6,14 @@ using VendorApp.Models;
 namespace VendorApp.Tests
 {
     [TestClass]
-    public class VendorTest :IDisposable {
-        public void Dispose()
-        {
-            VendorApp.ClearAll();
-        }
+    public class VendorTests 
+    {
+   
         [TestMethod]
-        public void VendorConstructor_CreatesInstanceOfVendor_Vendor ()
+       public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
         {
-            Vendor newVendor = new Vendor ("test", "test");
-            Assert.AreEqual (typeof (Vendor), newVendor.Gettype ());
+        Vendor newVendor = new Vendor("test", "test");
+        Assert.AreEqual(typeof(Vendor), newVendor.GetType());
         }
     }
- 
 }
