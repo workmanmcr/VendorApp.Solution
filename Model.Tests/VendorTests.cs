@@ -6,9 +6,11 @@ using VendorApp.Models;
 namespace VendorApp.Tests
 {
   [TestClass]
-  public class VendorTests
-  {
-
+  public class VendorTests :IDisposable {
+     public void Dispose()
+    {
+      Vendor.ClearAll();
+    }
     [TestMethod]
     public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
     {
@@ -28,5 +30,21 @@ namespace VendorApp.Tests
       //Assert
       Assert.AreEqual(name, result);
     }
+      [TestMethod]
+    public void GetAll_ReturnsCategoryObjects_CategoryList () 
+    {
+      //Arrange
+      string name01 = "taco";
+      string name02 = "corndog";
+      Vendor newVendor1 = new Vendor (name01,"Tacostore");
+      Vendor newVendor2 = new Vendor (name02,"corndog store");
+      List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
+      
+      //Act
+      List<Vendor> newResult = Vendor.GetAll();
+      //Assert
+      CollectionAssert.AreEqual (newList, newResult);
+    }
+    
   }
 }
