@@ -6,8 +6,9 @@ using VendorApp.Models;
 namespace VendorApp.Tests
 {
   [TestClass]
-  public class VendorTests :IDisposable {
-     public void Dispose()
+  public class VendorTests : IDisposable
+  {
+    public void Dispose()
     {
       Vendor.ClearAll();
     }
@@ -30,34 +31,49 @@ namespace VendorApp.Tests
       //Assert
       Assert.AreEqual(name, result);
     }
-      [TestMethod]
-    public void GetAll_ReturnsCategoryObjects_Category () 
+    [TestMethod]
+    public void GetAll_ReturnsCategoryObjects_Category()
     {
       //Arrange
       string name01 = "taco";
       string name02 = "corndog";
-      Vendor newVendor1 = new Vendor (name01,"Tacostore");
-      Vendor newVendor2 = new Vendor (name02,"corndog store");
+      Vendor newVendor1 = new Vendor(name01, "Tacostore");
+      Vendor newVendor2 = new Vendor(name02, "corndog store");
       List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
-      
+
       //Act
       List<Vendor> newResult = Vendor.GetAll();
       //Assert
-      CollectionAssert.AreEqual (newList, newResult);
+      CollectionAssert.AreEqual(newList, newResult);
     }
     [TestMethod]
-    public void FindVendor_ReturnCorrectVendor_Vendor ()
+    public void FindVendor_ReturnCorrectVendor_Vendor()
     {
-        //Arrange
-        string name01 = "bobs cookhouse";
-        string name02 = "sauage palace";
-        Vendor newVendor1 = new Vendor(name01, "test");
-        Vendor newVendor2 = new Vendor(name02, "test");
-        //Act
-        Vendor result = Vendor.Find(2);
-        //Assert
-        Assert.AreEqual(newVendor2, result);
+      //Arrange
+      string name01 = "bobs cookhouse";
+      string name02 = "sauage palace";
+      Vendor newVendor1 = new Vendor(name01, "test");
+      Vendor newVendor2 = new Vendor(name02, "test");
+      //Act
+      Vendor result = Vendor.Find(2);
+      //Assert
+      Assert.AreEqual(newVendor2, result);
     }
-    
+    // [TestMethod]
+    // public void AddOrder_VendorOrderListShowsOrder_Vendor()
+    // {
+    //   //Arrange
+    //   string name01 = "bobs smokehouse";
+    //   Vendor newVendor1 = new Vendor(name01, "Test");
+    //   Order newOrder1 = new Order("bob", "12dozen", 20, 1, "bob", 1);
+    //   List<Order> newVendorOrders = new List<Order> { newOrder1 };
+    //   newVendor1.AddOrder(newOrder1);
+
+    //   //Act
+    //   List<Order> result = newVendor1.GetOrders();
+    //   //Arrange
+    //   CollectionAssert.AreEqual(newVendorOrders, result);
+    // }
+
   }
 }
